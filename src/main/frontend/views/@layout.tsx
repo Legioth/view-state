@@ -1,6 +1,7 @@
 import { createMenuItems, useViewConfig } from '@vaadin/hilla-file-router/runtime.js';
 import { effect, signal } from '@vaadin/hilla-react-signals';
 import { AppLayout, DrawerToggle, Icon, SideNav, SideNavItem } from '@vaadin/react-components';
+import { refreshViewState } from 'Frontend/lib/viewState';
 import { Suspense, useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
@@ -17,6 +18,9 @@ export default function MainLayout() {
   const currentTitle = useViewConfig()?.title ?? defaultTitle;
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Call this once here rather than forcing all components to re-render for all routing changes
+  refreshViewState();
 
   useEffect(() => {
     documentTitleSignal.value = currentTitle;
