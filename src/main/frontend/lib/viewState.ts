@@ -31,7 +31,7 @@ function convertValue(value: string | null | undefined, type: 'string' | 'number
 export function expandParams(config: ViewStateDefinition, params: Record<string, Param> | Param): Record<string, Param> {
     if (typeof params !== 'object') {
         // TODO only consider required parameters?
-        const names = Object.keys(config.parameters);
+        const names = Object.keys(config.parameters[0]);
         if (names.length != 1) {
             throw Error("Single value only allowed if there's only on paramter")
         }
