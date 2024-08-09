@@ -87,7 +87,7 @@ export function refreshViewState() {
     // Use UNSAFE_DataRouterStateContext rather than useMatches to get access to the target element type
     const routerStateContext = useContext(UNSAFE_DataRouterStateContext);
     const matches = routerStateContext!.matches;
-    const matchedNames = matches.map((m: any) => m.route.element?.type?.name as (string | undefined)).filter(x => x != undefined); 
+    const matchedNames = matches.map((m: any) => m.route.element?.type?.name as (string | undefined)).filter(x => x != undefined) as string[]; 
 
     const params = useParams();
     const [searchParams] = useSearchParams();
