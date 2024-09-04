@@ -10,10 +10,10 @@ export type LoaderState<T> = {
     select: (onValue: (value: T) => ElementOrString, onLoading?: string | (() => ElementOrString), onError?: (error: any) => ElementOrString) => ElementOrString;
 } & ({
     readonly status: LoaderStatus.LOADING;
-    value?: T;
+    readonly value?: T;
 } | {
     readonly status: LoaderStatus.LOADED;
-    value: T;
+    readonly value: T;
 } | {
     readonly status: LoaderStatus.ERROR;
     readonly error: any;
